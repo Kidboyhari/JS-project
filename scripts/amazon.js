@@ -3,7 +3,7 @@ const product = [{
     name : 'Black and Gray Athletic Cotton Socks - 6 Pairs',
     rating: {
         stars: 4.5,
-        count: 87  //asdf
+        count: 87
     },
     priceCents: 500
 },{
@@ -142,7 +142,8 @@ product.forEach((products) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart">
+          <button class="add-to-cart-button button-primary js-add-to-cart"
+          data-product-name = "${products.name}">
             Add to Cart
           </button>
         </div>
@@ -152,7 +153,12 @@ product.forEach((products) => {
     document.querySelectorAll('.js-add-to-cart')
     .forEach((button) => {
         button.addEventListener('click', () => {
-            console.log('Added Product');
+            const productName = button.dataset.productName;
+            cart.push({
+                productName: productName,
+                quantity: 1        
+            });
+            console.log(cart);
         });
     });
 });
