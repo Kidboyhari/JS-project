@@ -154,10 +154,19 @@ product.forEach((products) => {
     .forEach((button) => {
         button.addEventListener('click', () => {
             const productName = button.dataset.productName;
-            cart.push({
-                productName: productName,
-                quantity: 1        
+            let matchingItem;
+            cart .forEach((item) => {
+                if (productName === item.productName){
+                    matchingItem = item;
+                }
             });
+            if (matchingItem) {
+                matchingItem.quantity += 1;
+            }else{
+                cart.push({
+                productName: productName,
+                quantity: 1 }
+        )};
             console.log(cart);
         });
     });
