@@ -160,14 +160,20 @@ product.forEach((products) => {
                     matchingItem = item;
                 }
             });
+        
             if (matchingItem) {
                 matchingItem.quantity += 1;
             }else{
                 cart.push({
                 productName: productName,
                 quantity: 1 }
-        )};
-            console.log(cart);
+        )}
+            let cartQuantity = 0;
+            cart.forEach((item) => {
+                cartQuantity += item.quantity;
+            });
+            document.querySelector('.js-cart-quantity')
+            .innerHTML = cartQuantity;
         });
     });
 });
